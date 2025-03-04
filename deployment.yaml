@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: miapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: miapp
+  template:
+    metadata:
+      labels:
+        app: miapp
+    spec:
+      containers:
+      - name: miapp
+        image: :image: 396913739303.dkr.ecr.us-east-2.amazonaws.com/jenkins:latest
+        ports:
+        - containerPort: 3000

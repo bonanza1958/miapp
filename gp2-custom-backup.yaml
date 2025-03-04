@@ -1,0 +1,14 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"allowVolumeExpansion":true,"apiVersion":"storage.k8s.io/v1","kind":"StorageClass","metadata":{"annotations":{},"name":"gp2-custom"},"provisioner":"kubernetes.io/aws-ebs","reclaimPolicy":"Delete","volumeBindingMode":"Immediate"}
+  creationTimestamp: "2025-02-24T23:54:12Z"
+  name: gp2-custom
+  resourceVersion: "598231"
+  uid: 7d92cca0-22e4-42a8-b5bf-a06c56a5ee5b
+provisioner: kubernetes.io/aws-ebs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate

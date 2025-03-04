@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  type: LoadBalancer  # 🔹 Expone Jenkins con un balanceador de carga en AWS
+  ports:
+    - port: 8080       # Puerto público para acceder a Jenkins
+      targetPort: 8080  # Puerto interno en el pod de Jenkins
+      protocol: TCP
+  selector:
+    app: jenkins       # 🔹 Debe coincidir con las etiquetas de los pods de Jenkins

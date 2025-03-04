@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: ebs-csi-node
+  namespace: kube-system
+  labels:
+    app: ebs-csi-node
+spec:
+  selector:
+    matchLabels:
+      app: ebs-csi-node
+  template:
+    metadata:
+      labels:
+        app: ebs-csi-node
+    spec:
+      serviceAccountName: ebs-csi-node-sa
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 2000
+      containers:
+        - name: ebs-csi-driver
+          image: amazon/aws-ebs-csi-driver:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 200m
+              memory: 512Mi
+          volumeMounts:
+            - name: socket-dir
+              mountPath: /csi
+            - name: kubelet-dir
+              mountPath: /var/lib/kubelet
+              mountPropagation: Bidirectional
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+        - name: kubelet-dir
+          hostPath:
+            path: /var/lib/kubelet
+            type: Directory
+      nodeSelector:
+        kubernetes.io/os: linux
+      tolerations:
+        - key: "node.kubernetes.io/not-ready"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 300
+        - key: "node.kubernetes.io/unreachable"
+          operator: "Exists"
+          effect: "NoExecute"
+          tolerationSeconds: 300

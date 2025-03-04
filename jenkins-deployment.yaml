@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  serviceName: jenkins
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      labels:
+        app: jenkins
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins/jenkins:lts
+        ports:
+        - name: http
+          containerPort: 8080
+        - name: jnlp
+          containerPort: 50000
+        volumeMounts:
+        - name: jenkins-data
+          mountPath: /var/jenkins_home
+      volumes:
+      - name: jenkins-data
+        persistentVolumeClaim:
+          claimName: jenkins
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  - name: jnlp
+    port: 50000
+    targetPort: 50000
+  selector:
+    app: jenkins
+  type: LoadBalancer
+
+ 

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"PersistentVolumeClaim","metadata":{"annotations":{},"name":"jenkins","namespace":"jenkins"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"10Gi"}},"storageClassName":"gp2-custom"}}
+    volume.beta.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+    volume.kubernetes.io/storage-provisioner: ebs.csi.aws.com
+  creationTimestamp: "2025-02-25T00:05:20Z"
+  finalizers:
+  - kubernetes.io/pvc-protection
+  name: jenkins
+  namespace: jenkins
+  resourceVersion: "601056"
+  uid: 6f4e188b-83ce-47ee-906c-cd40d7b23c9f
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: gp2-custom
+  volumeMode: Filesystem
+status:
+  phase: Pending

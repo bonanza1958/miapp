@@ -1,0 +1,69 @@
+- AccessConfig:
+    AuthenticationMode: API_AND_CONFIG_MAP
+    BootstrapClusterCreatorAdminPermissions: null
+  Arn: arn:aws:eks:us-east-2:396913739303:cluster/mi-cluster
+  CertificateAuthority:
+    Data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJTTRuRS8rSi94NEl3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVGdzB5TlRBeU1qSXlNekkyTXpGYUZ3MHpOVEF5TWpBeU16TXhNekZhTUJVeApFekFSQmdOVkJBTVRDbXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJBUURrL0QzWWNXY2I2NnVDenFkN1BZYmp4Wjc0L3c3NnNXd0VZYXhGbzlBMUQ5RXM2V2NHS2hkNzBrUHIKcWo0UWVYYlRzaW9qRFhibTlRcjFoT2lFTldiY0V5aXRQOWlGU3BBTFlXaE1hOWUzeER0cjVoT0F0WjFMbHQ0SwpDelBzaGVpdkk4dm1zYWNxdy93amNuVU9NYkw4dFdlZjFFckdwUFFLWFNwLzUwaTc4a1IyVVVydHhxR1dvQnZDCmJ5MlFwRjhEZ1RXVzlzNEFUM2FyNjVMUG9BaFpBTDdQcThiMmFadnJpN0M4QTFwb2lEZmhIQ2xKb0VLck1wb0MKeEgvbzhId2NRWVFhQzlJZDY1NXhNVXVhVkVmdEdtZTZtVVJVOXBMeUZCS091TFprOGhqT3hKcForNmZxM2k1ZApMemVNNkQrVDZBaS91UUoreDNFcmMraUpQT1NOQWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJUQURBUUgvTUIwR0ExVWREZ1FXQkJTN1d1Z2xFUmFOK0F6ZlRRZmpzU3h4VUErNUlqQVYKQmdOVkhSRUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQU5pdTVEUU1mNAprcVA4MUVnNHhOUkEya0QzZjcwZ0JEZkNWOS9oeEVvMU5XRmM1NWIvM2ROelRKSnMwN3RVdm02RTlhaFhKNEdCCmpSUGFXN0ZSTkdVNHhHTXArcDBQT21xL1VicFk5VVlyeUZMQXZKTHk0V2RyYnhuMHUyTzlwSlAzdjBUOGYzUnUKR3lkK3FyeGg2dDlMRzMyOStQbG9QVFZuS2M3YmNrRVBMd3FzRTV0ZGdKUzEvUHZRWVQyNEpiSndwTTJXSGp0Nwp4azlSMGE2NCtoaXJMMmR3N3lCNVFtaUNGTFlFTTVjNjdjUXBUZ2RYVUIzN1ZIWWVHT0RJSDEwYjcxV01RTFJsCnRXUXVKZU5lL3NsSUZCTFQzeS93TEFGb01OOWJLREVYL2FjYUJIa0NWdjEyTWJGR0lWUmw4SUV5aVBPYkUzUnQKTTNDUm1aclkwVzdrCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  ClientRequestToken: null
+  ComputeConfig: null
+  ConnectorConfig: null
+  CreatedAt: "2025-02-22T23:27:07.167Z"
+  EncryptionConfig: null
+  Endpoint: https://6DE3F52548B4DB51B857524D0608FE73.gr7.us-east-2.eks.amazonaws.com
+  Health:
+    Issues: []
+  Id: null
+  Identity:
+    Oidc:
+      Issuer: https://oidc.eks.us-east-2.amazonaws.com/id/6DE3F52548B4DB51B857524D0608FE73
+  KubernetesNetworkConfig:
+    ElasticLoadBalancing:
+      Enabled: false
+    IpFamily: ipv4
+    ServiceIpv4Cidr: 10.100.0.0/16
+    ServiceIpv6Cidr: null
+  Logging:
+    ClusterLogging:
+    - Enabled: false
+      Types:
+      - api
+      - audit
+      - authenticator
+      - controllerManager
+      - scheduler
+  Name: mi-cluster
+  OutpostConfig: null
+  PlatformVersion: eks.27
+  RemoteNetworkConfig: null
+  ResourcesVpcConfig:
+    ClusterSecurityGroupId: sg-02087a283607d6c4a
+    EndpointPrivateAccess: false
+    EndpointPublicAccess: true
+    PublicAccessCidrs:
+    - 0.0.0.0/0
+    SecurityGroupIds:
+    - sg-0df2ab6ee630cdd9e
+    SubnetIds:
+    - subnet-086e27257815c87b2
+    - subnet-00043be0f8c1774a5
+    - subnet-0108d058dd9896da9
+    - subnet-0e86d6b6416ba04fb
+    - subnet-0c5414895cacc27e6
+    - subnet-00463a8ee98710151
+    VpcId: vpc-032ed4ff7dc25dca4
+  RoleArn: arn:aws:iam::396913739303:role/eksctl-mi-cluster-cluster-ServiceRole-yjIYcSaIQxmU
+  Status: ACTIVE
+  StorageConfig: null
+  Tags:
+    Name: eksctl-mi-cluster-cluster/ControlPlane
+    alpha.eksctl.io/cluster-name: mi-cluster
+    alpha.eksctl.io/cluster-oidc-enabled: "false"
+    alpha.eksctl.io/eksctl-version: 0.204.0
+    aws:cloudformation:logical-id: ControlPlane
+    aws:cloudformation:stack-id: arn:aws:cloudformation:us-east-2:396913739303:stack/eksctl-mi-cluster-cluster/79653170-f174-11ef-8c5a-06cb6af0b1f9
+    aws:cloudformation:stack-name: eksctl-mi-cluster-cluster
+    eksctl.cluster.k8s.io/v1alpha1/cluster-name: mi-cluster
+  UpgradePolicy:
+    SupportType: EXTENDED
+  Version: "1.30"
+  ZonalShiftConfig: null
