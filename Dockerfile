@@ -1,18 +1,41 @@
-# Usa una imagen oficial de Node.js ligera
+# Usa una imagen oficial de Node.js ligera como base
 FROM node:14-alpine
 
-# Define el directorio de trabajo en el contenedor
+# Instalar dependencias necesarias para Jenkins
+RUN apk update && apk add --no-cache \
+    openjdk11-jre bash curl \
+    && rm -rf /var/cache/apk/*
+
+# Instalar Jenkins y configurar
+RUN curl -fsSL https://pkg.jenkins.io/debian/jenkins.io.key | tee \
+    /etc/apt/trusted.gpg.d/jenkins.asc
+RUN echo "deb http://pkg.jenkins.io/debian/jenkins.io/ stable main" | tee \
+    /etc/apt/sources.list.d/jenkins.list
+RUN apk add --no-cache \
+    openjdk11-jre bash curl \
+    && curl -fsSL https://pkg.jenkins.io/debian/jenkins.io.key | tee \
+    /etc/apt/trusted.gpg.d/jenkins.asc \
+    && curl -fsSL https://pkg.jenkins.io/debian/jenkins.io.key | tee /etc/apt/keyrings/jenkins.asc
+RUN apk add --no-cache \
+    openjdk11-jre bash curl \
+    && rm -rf /var/cache/apk/*
+
+# Agregar el certificado al contenedor (si es necesario)
+COPY eks-ca.crt /tmp/eks-ca.crt
+RUN keytool -import -trustcacerts -keystore /opt/java/openjdk/lib/security/cacerts -storepass changeit -noprompt -alias eks-ca -file /tmp/eks-ca.crt
+
+# Crear el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de configuración y instala dependencias
+# Copiar los archivos de la aplicación Node.js
 COPY package*.json ./
 RUN npm install
 
-# Copia el resto del código
+# Copiar el resto del código
 COPY . .
 
-# Expone el puerto en el que corre la aplicación (3000 en este caso)
+# Exponer el puerto de la aplicación Node.js
 EXPOSE 3000
 
-# Comando para iniciar la aplicación
-CMD ["node", "index.js"]
+# Iniciar Jenkins y tu app Node.js
+CMD ["sh", "-c", "jenkins && node index.js"]
